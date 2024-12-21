@@ -21,7 +21,7 @@ router.get('/:id', (req, res) => {
 //Add a task
 router.post('/', (req, res) => {
     const { title, description, deadline, priority, done } = req.body;
-    const timestamp = new Date().toISOString();
+    const time = new Date().toISOString();
     const newTask = {
         id: uuidv4(),
         title,
@@ -29,8 +29,8 @@ router.post('/', (req, res) => {
         deadline,
         priority,
         done,
-        create_at: timestamp,
-        update_at: timestamp
+        create_at: time,
+        update_at: time
     };
     tasksData.tasks.push(newTask);
     res.status(201).json(newTask);
@@ -54,7 +54,6 @@ router.put('/:id', (req, res) => {
     tasksData.tasks[taskIndex] = updatedTask;
     res.json(updatedTask);
 });
-
 
 //Delete a task
 router.delete('/:id', (req, res) => {
