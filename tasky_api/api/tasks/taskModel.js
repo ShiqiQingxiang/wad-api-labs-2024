@@ -3,8 +3,12 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
+  },
   title: { type: String, required: true },
-  description:  String ,
+  description:  String,
   deadline: Date,
   done: Boolean,
   priority: { type: String, enum: ["Low", "Medium", "High"], required: true },
